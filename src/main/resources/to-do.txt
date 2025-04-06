@@ -1,0 +1,59 @@
+/*
+To Add List:
+============
+- Math Utils:
+    > find Small / Large number from HashMap
+    > find Small / Large number from List
+    > Pick random number between X and Y
+    > Pick random string from a List
+
+- General Utils
+    > Logger
+    > PermChecker
+    > Size (x, y, z)
+    > Queue System
+
+- GUI Utils
+    > GUI page utils
+    > GUI Listeners
+
+- Item Utils
+    > Create Item
+    > Create player Skull Item from skin link
+    > Set Item Meta Data
+
+- World Utils
+    > Create empty MC world Asynchronously
+    > Place a block at XYZ
+    > Get number of players in the world
+    > Get Location of a Player
+
+- Config Utils
+    > Reset Config
+
+- File Management
+    > Full file verification to creation
+    > Verify file location and if they exist
+    > Create New File
+    > Read JSON
+    > Write to JSON
+
+- Hooks
+    > WorldEdit
+        - Load Schematic
+        - Paste Schematic at Location
+        - Rotate Schematic
+        -
+    > MythicMobs
+    > WorldGuard
+        - Get Region
+        - Set Region Flag
+        - Create Region
+        - Get number of players in a region
+    > Vault
+    > PlaceholderAPI
+    > Discord Hook
+- Time
+    > Timers
+
+ */
