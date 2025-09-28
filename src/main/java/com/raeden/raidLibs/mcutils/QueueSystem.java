@@ -1,4 +1,4 @@
-package com.raeden.raidLibs.general_mc_utils;
+package com.raeden.raidLibs.mcutils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -55,7 +55,7 @@ public class QueueSystem<K, V> {
             runQueue();
             isQueueOn = true;
         } else {
-            Logger.infoLog(plugin.getName(), "Queue is already running!");
+            GeneralUtils.infoLog("Queue is already running!");
         }
     }
 
@@ -64,7 +64,7 @@ public class QueueSystem<K, V> {
             queueRunnable.cancel();
             isQueueOn = false;
         } else {
-            Logger.infoLog(plugin.getName(), "Queue is not running!");
+            GeneralUtils.infoLog("Queue is not running!");
         }
     }
 

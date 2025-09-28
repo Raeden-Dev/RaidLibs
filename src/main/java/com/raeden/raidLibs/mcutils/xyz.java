@@ -1,10 +1,13 @@
-package com.raeden.raidLibs.general_mc_utils;
+package com.raeden.raidLibs.mcutils;
 
-public class SizeXYZ {
+public class xyz {
     private int x;
     private int y;
     private int z;
-    public SizeXYZ(int x, int y, int z) {
+
+    public xyz() {}
+
+    public xyz(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;

@@ -8,7 +8,7 @@ public final class RaidLibs extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("[RaidLibs]: Plugin locked and loaded!");
+        System.out.println("[RaidLibs] Plugin locked and loaded!");
 
     }
 

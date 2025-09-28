@@ -1,4 +1,4 @@
-package com.raeden.raidLibs.item_utils;
+package com.raeden.raidLibs.item;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -22,10 +22,8 @@ public class ItemCreation {
         return myItem;
     }
     public static ItemStack addLoreToItem(ItemStack item, String lore) {
-        if (item == null) return null;
-
         ItemMeta meta = item.getItemMeta();
-        if (meta == null) return null;
+        if (meta == null) return item;
 
         meta.setLore(List.of(meta.getLore() + lore));
         item.setItemMeta(meta);

@@ -1,4 +1,4 @@
-package com.raeden.raidLibs._utils;
+package com.raeden.raidLibs.utils;
 
 import java.util.Map;
 
