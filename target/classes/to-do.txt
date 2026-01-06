@@ -1,0 +1,142 @@
+/*
+To Add List:
+============
+- Math Utils:
+    > ✅ find Small / Large number from HashMap
+    > ✅ find Small / Large number from List
+    > ✅ Pick random number between X and Y
+    > ✅ Pick random string from a List
+    > ✅ Pick Random From Weight Map
+    > ✅ Normalize Weight Map
+
+- General Utils
+    > ✅ Logger
+    > ✅ PermChecker
+    > ✅ Size (x, y, z)
+    > ✅ Queue System
+
+- GUI Utils
+    > ✅ GUI page utils
+    > GUI Listeners
+
+- Item Utils
+    > ✅ Create Item
+    > Create player Skull Item from skin link
+    > ✅ Set Item Lore
+    > Set Item Durability
+    > Set Item Name
+    > Add Enchant to Item
+    > Custom Enchant
+    > Add Custom Enchant to Item
+    > Remove Enchant
+
+
+- World Utils
+    > Create empty MC world Asynchronously
+    > Place a block at XYZ
+    > Get number of players in the world
+    > Get Location of a Player
+
+- Config Utils
+    > Reset Config
+
+- File Management
+    > Full file verification to creation
+    > Verify file location and if they exist
+    > Create New File
+    > Read JSON
+    > Write to JSON
+
+- Hooks
+    > WorldEdit
+        - Load Schematic
+        - Paste Schematic at Location
+        - Rotate Schematic
+        -
+    > MythicMobs
+    > WorldGuard
+        - Get Region
+        - Set Region Flag
+        - Create Region
+        - Get number of players in a region
+    > Vault
+    > PlaceholderAPI
+    > Discord Hook
+- Time
+    > Timers
+
+ */
+
+ GPT suggestions:
+ ✅ Math Utils (additions)
+ Clamp value between min/max
+ Round to X decimal places
+ Vector math: distance, angle, normalize
+ Weighted random selection
+ Random enum value
+ Is number even/odd, power of two, prime
+
+ ✅ General Utils (additions)
+ UUID generator
+ Time formatting (e.g., ms -> 1h 2m)
+ Cooldown manager
+ Task scheduler (sync/async delayed/repeating tasks wrapper)
+ Player/session cache system
+ Simple profiler/timer
+
+ ✅ GUI Utils (additions)
+ Inventory builder (slots, items, pagination)
+ Dynamic GUI titles
+ Button click sound system
+ GUI open/close tracker
+ Page indicator (e.g., "Page 1/5")
+
+ ✅ Item Utils (additions)
+ Add glowing effect
+ Compare two items (deep equality)
+ Add NBT tags (if using NMS or third-party lib)
+ Lore formatter with color + line breaks
+ Convert item to/from Base64
+
+ ✅ World Utils (additions)
+ Chunk preloader
+ Find safe teleport location
+ Scan for nearby blocks of type X
+ Region checker (location inside cuboid)
+ World border handler
+ Send fake block to player (via packets)
+
+ ✅ Config Utils (additions)
+ Auto-versioned config migration
+ Path-based value setter (deep access)
+ Config section walker (loop all nested values)
+ Reload notifier system (send msg to players/devs)
+ Multiple config file handler
+
+ ✅ File Management (additions)
+ Zip/unzip directories
+ Async file read/write wrapper
+ Folder copy/delete recursively
+ List files with filter (e.g., all .json)
+ Auto-backup system with timestamps
+
+ 🆕 Suggested New Categories
+ 📦 Data Structure Utils
+ LRU cache
+ Circular queue
+ Weighted map
+ Multimap (e.g., Map<K, List<V>>)
+
+ 📈 Debugging / Dev Tools
+ Stack trace cleaner
+ Auto-debug print with caller info
+ Color-coded console printer
+ Auto exception logger
+ Object to YAML/JSON string preview
+
+ 🧱 Block/Entity Utils
+ Spawn custom entity
+ Change block temporarily and revert
+ Send fake entity (packet-level)
+ Find nearby entities with filters
+ Block state snapshot & restore

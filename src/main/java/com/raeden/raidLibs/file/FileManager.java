@@ -4,11 +4,18 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.raeden.raidLibs.mcutils.GeneralUtils;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
 import java.lang.reflect.Type;
 
 public class FileManager {
+    public static void saveResourceFile(JavaPlugin plugin, String source, boolean replace) {
+        File file = new File(plugin.getDataFolder(), source);
+        if(!file.exists()) {
+            plugin.saveResource(source, replace);
+        }
+    }
     public static void createNewFile(String location, String file_name) {
         File file = new File(location, file_name);
 
@@ -37,9 +44,7 @@ public class FileManager {
 
     // File with certain extension search
     public static boolean doesFileExist(File file, String extension) {
-        if(file.exists() && file.isFile() && extension != null) {
-            return true;
-        }
+        if(file.exists() && file.isFile() && extension != null) return true;
 
         String fileName = file.getName();
 
@@ -51,9 +56,7 @@ public class FileManager {
     }
 
     public static <T> T readJSONFile(File file_name, Class<T> clazz) {
-        if(!doesFileExist(file_name, ".json")) {
-            return null;
-        }
+        if(!doesFileExist(file_name, ".json")) return null;
 
         Gson gson = new Gson();
 
@@ -68,9 +71,7 @@ public class FileManager {
     }
 
     public static <T> void writeToJSONFile(File file_name, Class<T> clazz, boolean flush_close) {
-        if(!doesFileExist(file_name, ".json")) {
-            return;
-        }
+        if(!doesFileExist(file_name, ".json")) return;
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

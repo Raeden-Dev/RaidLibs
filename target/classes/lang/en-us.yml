@@ -1,0 +1,38 @@
+######################################################################################
+# You can use minecraft color codes
+# &0 - Black      |    &1 - Dark Blue      |   &2 - Dark Green     |   &3 - Dark Aqua
+# &4 - Dark Red   |    &5 - Dark Purple    |   &6 - Gold           |   &7 - Gray
+# &8 - Dark Gray  |    &9 - Blue           |   &a - Green          |   &b - Aqua
+# &c - Red        |    &d - Light Purple   |   &e - Yellow         |   &f - White
+# &k - Obfuscated |    &l - Bold           |   &m - Strikethrough  |   &n - Underline
+# &o - Italic     |    &r - Reset
+######################################################################################
+
+# Messages with variables: "</>", "<input>", "<var>", "-VAR"
+# "</>", "<input>", "<var>", "-VAR" will be replaced with given input
+
+# These are sent at console
+metadata:
+  language: "en-US"
+  author: "Raeden"
+  version: "1.0"
+  last-updated: "30-09-2025"
+
+system:
+  console-breaker: "________________________________________________________"
+  load-success: " ✓ Successfully loaded </>"
+  load-failure: " ✗ Failed to load </>"
+  file-found: " ✓ Found </>"
+  file-not-found: " ✗ Could not find </>"
+  create-file: " ✓ Created new </>"
+  create-file-fail: " ✗ Failed to create new </>"
+  directory-found: " ✓ Found </> directory"
+  directory-not-found: " ✗ Could not find </> directory"
+  disable-plugin: "[ ✗ ] Disabling plugin..."
+  lang-change:
+    success:
+      player-msg: "&aLanguage successfully changed to &e</>"
+      console-msg: " ✓ Successfully changed language to </>"
+    fail:
+      player-msg: "&cFailed to change language to &e</>"
+      console-msg: " ✗ Failed to change language to </>"
