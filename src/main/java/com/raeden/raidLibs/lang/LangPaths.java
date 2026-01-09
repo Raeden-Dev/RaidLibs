@@ -1,6 +1,6 @@
 package com.raeden.raidLibs.lang;
 
-public enum LangPaths {
+public enum LangPaths implements LangKey {
     /*
     SYS = System
     PM = Player Msg          |       CM = Console msg
@@ -32,6 +32,8 @@ public enum LangPaths {
         this.path = path;
     }
 
+    @Override
     public String getPath() {return path;}
+
     public void setPath(String path) {this.path = path;}
 }

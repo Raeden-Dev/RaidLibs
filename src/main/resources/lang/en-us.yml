@@ -19,6 +19,10 @@ metadata:
   last-updated: "30-09-2025"
 
 system:
+  prefix:
+    player: "RL >> "
+    console: "[Raid Libs] "
+    list: "> "
   console-breaker: "________________________________________________________"
   load-success: " ✓ Successfully loaded </>"
   load-failure: " ✗ Failed to load </>"

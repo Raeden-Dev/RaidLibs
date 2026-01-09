@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class LanguageManager {
     private final File defaultLangFile;
     private final List<String> placeholders;
     private FileConfiguration langConfig;
+
+    private final List<String> defaultVarList = new ArrayList<>(List.of("<v>", "</>", "<->", "&v", "~v", "-VAR", "{/}"));
 
     public LanguageManager(LanguageModule module) {
         this.plugin = module.getPlugin();
@@ -69,7 +72,7 @@ public class LanguageManager {
     }
 
     // Standard way to retrieve message from a lang.yml
-    public String getMsg(MessageTarget target, LangPaths path) {
+    public String getMsg(MessageTarget target, LangKey path) {
         if(langConfig == null) return "<Could not find language config file!>";
         String rawMessage = langConfig.getString(path.getPath());
 
@@ -82,7 +85,7 @@ public class LanguageManager {
     }
 
     // Standard way to retrieve a StringList in a .yml
-    public List<String> getMsgList(MessageTarget target, LangPaths path) {
+    public List<String> getMsgList(MessageTarget target, LangKey path) {
         if(langConfig == null) return Collections.singletonList("<Could not find language config file!>");
         List<String> rawList = langConfig.getStringList(path.getPath());
 
@@ -101,7 +104,7 @@ public class LanguageManager {
     }
 
     // Use if there is a single placeholder in the message you'll fetch
-    public String getMsgWithInput(MessageTarget target, LangPaths path, String input) {
+    public String getMsgWithInput(MessageTarget target, LangKey path, String input) {
         if(langConfig == null) return ChatColor.RED + "<Could not find language config file!>";
         String rawMessage = langConfig.getString(path.getPath());
 
@@ -119,8 +122,25 @@ public class LanguageManager {
         return buildMessage(rawMessage, target);
     }
 
+    public String getMsgWithInput(MessageTarget target, String msg, String input) {
+        String rawMessage = msg;
+
+        if (rawMessage == null) {
+            if (target.equals(MessageTarget.PLAYER)) return ChatColor.RED + "<UNDEFINED MESSAGE>";
+            return "<UNDEFINED MESSAGE>";
+        }
+
+        // Replace variable
+        String varChar = hasAVarInText(placeholders, rawMessage);
+        if(varChar != null) {
+            rawMessage = rawMessage.replace(varChar, input);
+        }
+
+        return buildMessage(rawMessage, target);
+    }
+
     // Use if there is a multiple placeholder in the message you'll fetch
-    public String getMsgWithInputs(MessageTarget target, LangPaths path, List<String> inputs) {
+    public String getMsgWithInputs(MessageTarget target, LangKey path, List<String> inputs) {
         if (langConfig == null) return ChatColor.RED + "<Could not find language config file!>";
 
         String rawMessage = langConfig.getString(path.getPath());
@@ -134,6 +154,22 @@ public class LanguageManager {
 
         // Replace placeholders with values
         String formattedMsg = formatMultiVarMsg(placeholders, inputList, rawMessage);
+
+        return buildMessage(formattedMsg, target);
+    }
+
+    //
+    public String getMsgWithInputs(MessageTarget target, String msg, List<String> inputs) {
+        if (msg == null) {
+            return target.equals(MessageTarget.PLAYER)
+                    ? ChatColor.RED +  "<UNDEFINED MESSAGE>"
+                    :  "<UNDEFINED MESSAGE>";
+        }
+
+        List<String> inputList = clampInputToPlaceholders(msg, inputs);
+
+        // Replace placeholders with values
+        String formattedMsg = formatMultiVarMsg(placeholders, inputList, msg);
 
         return buildMessage(formattedMsg, target);
     }
@@ -207,6 +243,8 @@ public class LanguageManager {
     }
 
     private int totalVarInText(List<String> varList, String msg) {
+        if (varList == null || varList.isEmpty()) varList = defaultVarList;
+
         int count = 0;
         for (String s : varList) {
             int index = msg.indexOf(s);
@@ -219,6 +257,8 @@ public class LanguageManager {
     }
 
     private String hasAVarInText(List<String> varList, String msg) {
+        if (varList == null || varList.isEmpty()) varList = defaultVarList;
+
         for (String s : varList) {
             if (msg.contains(s)) return s;
         }
@@ -226,6 +266,8 @@ public class LanguageManager {
     }
 
     private String formatMultiVarMsg(List<String> varList, List<String> inputList, String msg) {
+        if (varList == null || varList.isEmpty()) varList = defaultVarList;
+
         String formatted = msg;
         int idx = 0;
         for (String s : varList) {
@@ -235,6 +277,10 @@ public class LanguageManager {
             }
         }
         return formatted;
+    }
+
+    public List<String> getDefaultVarList() {
+        return defaultVarList;
     }
 
     public enum MessageTarget {
